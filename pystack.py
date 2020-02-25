@@ -1,5 +1,6 @@
 #!/usr/bin/python
-#pylint; ignore invalid-name
+#pylint: disable=invalid-name
+#pylint: disable=superfluous-parens
 """
    Stack implementation
 
@@ -70,12 +71,13 @@ class pystack(object):
         item = self.stack.pop()
 
         self.stackcount = self.stackcount - 1
-
+        self.stacktop = self.stacktop - 1
+        print("count = ", self.stackcount)
         return item
 
     def peek(self):
         """
-            peek the top of the stack
+            peek the top of the stack - doesn't change the contents
         """
         if self.isEmpty():
             print("ERROR = Stack is empty")
@@ -83,7 +85,7 @@ class pystack(object):
 
         return self.stack[self.stacktop]
 
-        
+
     def show(self):
         """
             Show contents of the stack
@@ -120,7 +122,7 @@ if __name__ == "__main__":
     # <char>  Stack
     print("Test03 - create <char> stack")
     stack3 = pystack(4)
-    print("Test03 - size = ", stack1.size())          
+    print("Test03 - size = ", stack1.size())
     stack3.push('A')
     stack3.push('B')
     stack3.push('C')
@@ -141,5 +143,7 @@ if __name__ == "__main__":
     stack4.show()
     print("stack4 pop  = ", stack4.pop())
     stack4.show()
-
-    
+    print("stack4 pop  = ", stack4.pop())
+    stack4.show()
+    print("stack4 pop  = ERROR ", stack4.pop())
+    stack4.show()
