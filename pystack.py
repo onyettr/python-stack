@@ -43,6 +43,7 @@ class pystack(object):
         """
             Test if any room left on the stack
         """
+        print(self.stacktop)
         if self.stacktop >= self.stackmax:
             return True
 
@@ -53,11 +54,14 @@ class pystack(object):
             push item to stack
         """
         if self.stacktop+1 == self.stackmax:
-            print("ERROR - Full stack!")
+            raise ValueError('Stack is Full')
             return
 
         self.stacktop = self.stacktop + 1
         self.stackcount = self.stackcount + 1
+
+        print("push count = ", self.stackcount)
+        
         self.stack.append(item)
 
     def pop(self):
@@ -65,14 +69,15 @@ class pystack(object):
             pop top of the stack
         """
         if self.isEmpty():
-            print("ERROR- Empty stack!")
+            raise ValueError('Stack is Empty')
             return
 
         item = self.stack.pop()
 
         self.stackcount = self.stackcount - 1
         self.stacktop = self.stacktop - 1
-        print("count = ", self.stackcount)
+        print("pop count = ", self.stackcount)
+        
         return item
 
     def peek(self):
@@ -81,6 +86,7 @@ class pystack(object):
         """
         if self.isEmpty():
             print("ERROR = Stack is empty")
+            raise ValueError('Stack is Empty')
             return
 
         return self.stack[self.stacktop]
@@ -105,6 +111,7 @@ if __name__ == "__main__":
     print("Test01  pop   = ", stack1.pop())
     stack1.push(10)
     print("Test01 - size = ", stack1.size())
+    
     stack1.show()
 
     print("Test02 - create <int> stack, size 4")
