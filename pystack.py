@@ -43,7 +43,7 @@ class pystack(object):
         """
             Test if any room left on the stack
         """
-        print(self.stacktop)
+#        print(self.stacktop)
         if self.stacktop >= self.stackmax:
             return True
 
@@ -60,8 +60,8 @@ class pystack(object):
         self.stacktop = self.stacktop + 1
         self.stackcount = self.stackcount + 1
 
-        print("push count = ", self.stackcount)
-        
+#        print("push count = ", self.stackcount)
+
         self.stack.append(item)
 
     def pop(self):
@@ -76,8 +76,8 @@ class pystack(object):
 
         self.stackcount = self.stackcount - 1
         self.stacktop = self.stacktop - 1
-        print("pop count = ", self.stackcount)
-        
+#        print("pop count = ", self.stackcount)
+
         return item
 
     def peek(self):
@@ -111,7 +111,7 @@ if __name__ == "__main__":
     print("Test01  pop   = ", stack1.pop())
     stack1.push(10)
     print("Test01 - size = ", stack1.size())
-    
+
     stack1.show()
 
     print("Test02 - create <int> stack, size 4")
