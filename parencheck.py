@@ -10,6 +10,7 @@
     '^' to show the position that is missing
 """
 from pystack import pystack
+from pyansi  import print_colour, print_reset, FG_RED
 
 mystack = pystack(20)
 
@@ -24,6 +25,8 @@ def ParenthesisMatch(string_to_parse):
     """
     charpos = 0
     check = True
+
+    print_reset()
     
     for letter in string_to_parse:
         if letter == '(':
@@ -41,7 +44,8 @@ def ParenthesisMatch(string_to_parse):
         print(string_to_parse)
         for i in range(charpos):
             print(" ", end='')
-        print("^\n")
+#        print("^\n")
+        print_colour(FG_RED, "^\n")
 
         return False
 
