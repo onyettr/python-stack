@@ -45,7 +45,7 @@ def ParenthesisMatch(string_to_parse):
         for i in range(charpos):
             print(" ", end='')
 #        print("^\n")
-        print_colour(FG_RED, "^\n")
+        print_colour(FG_RED, "^")
 
         return False
 
@@ -83,3 +83,5 @@ if __name__ == '__main__':
     Exp8 = "())))))))";
     if ParenthesisMatch(Exp8):
         print(Exp8 + "  Matches")
+
+    print_reset()
