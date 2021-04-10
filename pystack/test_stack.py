@@ -16,7 +16,7 @@ class TestStack(unittest.TestCase):
 
     def test_overflow(self):
         """
-            Test overvlow of stack by pushing too many items
+            Test overflow of stack by pushing too many items
         """
         Stack2 = pystack(1)
 
@@ -52,25 +52,30 @@ class TestStack(unittest.TestCase):
 
         self.assertTrue(Stack.size() == 3)
 
-    def test_peek(self):
+    def test_peek_empty(self):
         """
-            test the stack peek operation
+            test the stack peek operation with stack empty
         """
         Stack = pystack(5)
 
         try:
             Stack.peek()
-        except:
+        except ValueError:
             pass
         else:
-            self.fail('test_peek - didnt seen an expcetion')
-        
-        Stack.push(200)
-        Stack.push(201)
-        Stack.push(202)
+            self.fail('test_peek_empty - no exception raised on empty')
 
-        self.assertTrue(Stack.peek() == 202)
-        self.assertTrue(Stack.size() == 3)
+    def test_peek_non_empty(self):
+        """
+            test the stack peek operation with non empty stack
+        """
+        Stack = pystack(5)
+
+        Stack.push(200)
+
+        Stack.peek()
+        
+        self.assertTrue(Stack.peek() == 200)
 
     def test_isFull(self):
         """
